@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amina and the Second Conditional</title>
+<style>
+:root{color-scheme:light;--bg:#fff1ea;--card:#fffdfb;--ink:#4d3b3f;--mut:#9b7f86;--pk:#ff9db6;--pk2:#ffe3ea;--mt:#86cdf2;--mt2:#e2f3fd;--sn:#ffb36b;--rd:#ff8f7a;--rd2:#ffe5dc;--ln:#f9d9cb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.hero{padding:22px 16px 14px;text-align:center;background:linear-gradient(135deg,#ffd3de,#ffe1b9 55%,#cfeafb)}
+h1{margin:0;font-size:24px}.sub{margin:4px 0 12px;color:var(--mut);font-size:14px}
+.bar{height:10px;background:var(--card);border-radius:9px;overflow:hidden;max-width:420px;margin:auto}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pk),var(--sn));transition:width .4s}
+#cnt{font-size:13px;color:var(--mut);margin-top:6px}
+main{max-width:640px;margin:auto;padding:14px 12px 40px}
+.card{background:var(--card);border-radius:20px;padding:16px;margin-bottom:14px;border:2px solid var(--ln)}
+.card.done{border-color:var(--mt)}
+h2{margin:0 0 4px;font-size:18px}.card.done h2::after{content:" ✓";color:var(--mt)}
+.instr{margin:0 0 12px;color:var(--mut);font-size:14px}
+button{font:inherit;color:inherit;cursor:pointer}
+.chip{background:var(--pk2);border:2px solid transparent;border-radius:14px;padding:8px 12px;margin:3px;text-align:left}
+.chip.sel{border-color:var(--pk)}.chip.ok{background:var(--mt2);border-color:var(--mt)}.chip.bad{background:var(--rd2);border-color:var(--rd)}
+.fc{display:block;width:100%;margin:6px 0;padding:14px;border-radius:16px;border:2px dashed var(--pk);background:var(--pk2);text-align:center}
+.fc.back{background:var(--mt2);border-color:var(--mt);color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}.col{display:flex;flex-direction:column}.col .chip{margin:3px 0}
+.q{padding:10px 0;border-top:1px solid var(--ln)}.q:first-of-type{border-top:0}
+.en{margin:0}.ru{margin:2px 0 6px;color:var(--mut);font-size:14px}.log .ru{margin:8px 0}
+.opts{display:flex;flex-wrap:wrap}
+input{font:inherit;width:110px;max-width:34vw;border:0;border-bottom:2px solid var(--pk);background:var(--pk2);color:var(--ink);border-radius:8px 8px 0 0;padding:2px 6px;margin:0 3px}
+input.wide{width:100%;max-width:100%;margin:4px 0}
+input.ok{border-color:var(--mt);background:var(--mt2)}input.bad{border-color:var(--rd);background:var(--rd2)}
+.w{display:inline-block;font-size:12px;font-weight:700;background:var(--sn);color:#4a3a00;border-radius:8px;padding:1px 7px;margin-left:4px}
+.go{margin-top:10px;background:var(--pk);color:#fff;border:0;border-radius:14px;padding:10px 18px;font-weight:700}
+.ans{min-height:46px;border:2px dashed var(--ln);border-radius:14px;padding:4px;margin:6px 0}.ans.ok{border-color:var(--mt);background:var(--mt2)}.ans.bad{border-color:var(--rd);background:var(--rd2)}
+.bank{display:flex;flex-wrap:wrap}
+.txt{background:var(--pk2);border-radius:14px;padding:6px 12px;margin-bottom:10px}
+.boss{background:linear-gradient(135deg,var(--pk2),var(--mt2));border-radius:14px;padding:8px 12px;margin-bottom:8px}
+.hp{height:10px;border-radius:8px;background:var(--card);overflow:hidden}.hp i{display:block;height:100%;width:100%;background:var(--rd);transition:width .3s}
+.lv{color:var(--rd);letter-spacing:2px}
+#fin{display:none;text-align:center;font-weight:700;padding:14px}
+
+.tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;justify-content:center;padding:10px 12px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e6def8}
+.tab{border:1px solid #dcd2f4;background:#f4f0ff;color:#66558c;border-radius:14px;padding:10px 13px;font-weight:750;font-size:13px;flex:1;max-width:310px}
+.tab.active{background:linear-gradient(135deg,#b8dfff,#d8c8ff);border-color:#a99ae2;color:#40376e;box-shadow:0 4px 12px #a99ae233}
+.lesson-page{display:none;min-height:100vh}.lesson-page.active{display:block}
+#lesson2{--bg:#f0f5ff;--card:#ffffff;--ink:#3f4268;--mut:#8586ad;--pk:#9a91e8;--pk2:#eeeaff;--mt:#83c9ef;--mt2:#e4f6ff;--sn:#b9a7f4;--rd:#ef9bb5;--rd2:#fff0f5;--ln:#dcdcf8}
+#lesson2 .hero{background:linear-gradient(135deg,#d9edff,#e8e0ff 55%,#d7f3f5)}
+#lesson2 .bar i{background:linear-gradient(90deg,#8dcdf4,#a99af0)}
+#lesson2 .card{box-shadow:0 5px 18px #a9b6e51a}
+#lesson2 .chip{background:#eeeaff}
+#lesson2 .chip.ok{background:#e4f6ff;border-color:#83c9ef}
+#lesson2 .go{background:linear-gradient(100deg,#9acff2,#a99af0)}
+#lesson2 .fc{border-color:#aaa0e8;background:#eeeaff}
+#lesson2 .fc.back{background:#e4f6ff;border-color:#83c9ef}
+#lesson2 .square-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#lesson2 .square-card{aspect-ratio:1/1;min-width:0;position:relative;border:2px solid #d4cdf5;border-radius:19px;padding:13px;background:linear-gradient(145deg,#f1edff,#e4f5ff);color:#45436f;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;box-shadow:0 5px 13px #9e9bd51c;transition:transform .18s,background .18s}
+#lesson2 .square-card:active{transform:scale(.97)}
+#lesson2 .square-card .sq-back{display:none;font-weight:600;color:#3f6485}
+#lesson2 .square-card.opened{background:linear-gradient(145deg,#e1f4ff,#eee8ff);border-color:#8ec8ed}
+#lesson2 .square-card.opened .sq-front,#lesson2 .square-card.opened .sq-hint{display:none}
+#lesson2 .square-card.opened .sq-back{display:block}
+#lesson2 .sq-hint{position:absolute;bottom:7px;font-size:9px;letter-spacing:1.5px;color:#9187ca}
+#lesson2 #fin2{display:none;text-align:center;font-weight:800;padding:18px;color:#6c62a6}
+@media(max-width:390px){.tab{font-size:11px;padding:9px 7px}#lesson2 .square-grid{gap:7px}#lesson2 .square-card{font-size:12px;padding:9px}}
+
+</style>
+</head>
+<body>
+<nav class="tabs" aria-label="Разделы урока">
+  <button class="tab active" data-tab="lesson1">🩺 Блок 1 · Second Conditional</button>
+  <button class="tab" data-tab="lesson2">🐱 Блок 2 · Приключения Ричарда</button>
+</nav>
+<section id="lesson1" class="lesson-page active">
+<header class="hero">
+<h1>Amina and the Second Conditional</h1>
+<p class="sub">Амина, мед. университет, анатомия и физиология. Тренажёр по Second Conditional</p>
+<div class="bar"><i id="pb"></i></div><div id="cnt"></div>
+</header>
+<main id="app"></main>
+<div id="fin">Все задания пройдены. Амина, ты готова к экзаменам!</div>
+</section>
+<section id="lesson2" class="lesson-page">
+  <header class="hero hero2">
+    <h1>🐾 Richard’s Little Adventures</h1>
+    <p class="sub">Кот Ричард исследует квартиру, ищет приключения и попадает в забавные истории</p>
+    <div class="bar"><i id="pb2"></i></div><div id="cnt2"></div>
+  </header>
+  <main id="app2"></main>
+  <div id="fin2">Ричард гордится тобой! Все задания второго блока пройдены!</div>
+</section>
+<script>
+const h=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.innerHTML=x;return e};
+const norm=s=>s.toLowerCase().replace(/[’`]/g,"'").replace(/[.,!?]/g,"").replace(/\s+/g," ").trim();
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+let dn=0;
+const EJ=[];
+const EMJ=s=>{const m=EJ.find(x=>x[0].test(s));return m?m[1]:""};const EM=s=>s+" "+EMJ(s);
+const IC=[];
+function flip(el,d,done){let n=0;d.forEach(([e,r])=>{e=EM(e);const c=h("button","fc",e);let o=0;c.onclick=()=>{o=!o;c.innerHTML=o?r:e;c.classList.toggle("back",o);if(o&&!c.s){c.s=1;if(++n==d.length)done()}};el.append(c)})}
+function match(el,d,done){const L=h("div","col"),R=h("div","col"),log=h("div","log"),g=h("div","two");let sl=null,sr=null,n=0;
+const mk=(t,i,side)=>{const b=h("button","chip",t);b.onclick=()=>{if(b.classList.contains("ok"))return;(side?R:L).querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));b.classList.add("sel");if(side)sr=[i,b];else sl=[i,b];
+if(sl&&sr){if(sl[0]==sr[0]){sl[1].className=sr[1].className="chip ok";log.append(h("p","ru",EM(d[i][0]+" "+d[i][1])+"<br><i>"+d[i][2]+"</i>"));if(++n==d.length)done()}else[sl[1],sr[1]].forEach(x=>{x.classList.remove("sel");x.classList.add("bad");setTimeout(()=>x.classList.remove("bad"),500)});sl=sr=null}};return b};
+d.forEach((p,i)=>L.append(mk(p[0],i,0)));shuf(d.map((p,i)=>i)).forEach(i=>R.append(mk(d[i][1],i,1)));g.append(L,R);el.append(g,log)}
+function mc(el,d,done,cb){let n=0;d.forEach(q=>{const b=h("div","q","<p class=en>"+EM(q.s)+"</p><p class=ru>"+q.r+"</p>"),o=h("div","opts");
+q.o.forEach(t=>{const x=h("button","chip",t);x.onclick=()=>{if(b.s||b.l)return;if(t==q.a){x.classList.add("ok");b.s=1;cb&&cb(1);if(++n==d.length)done()}else{x.classList.add("bad");cb&&cb(0)}};o.append(x)});b.append(o);el.append(b)})}
+function typ(el,d,done){const rows=d.map(q=>{const [a,b]=q.s.split("___"),r=h("div","q","<p class=en>"+a+"<input autocomplete=off autocapitalize=off spellcheck=false>"+b+" "+EMJ(q.s)+" <span class=w>"+q.w+"</span></p><p class=ru>"+q.r+"</p>");el.append(r);return r});
+const btn=h("button","go","Проверить");btn.onclick=()=>{let ok=0;rows.forEach((r,i)=>{const i2=r.querySelector("input"),g=d[i].a.includes(norm(i2.value));i2.className=g?"ok":"bad";ok+=g});btn.textContent="Проверить ещё раз ("+ok+"/"+d.length+")";if(ok==d.length)done()};el.append(btn)}
+function build(el,d,done,tr){let n=0;d.forEach(q=>{const A=tr==2?q.r:q.e,box=h("div","q"),pr=h("p","ru",tr==1?q.r+" "+EMJ(q.e):tr==2?q.e+" "+EMJ(q.e):"Собери предложение ✍️"),ans=h("div","ans"),bk=h("div","bank"),c=h("button","go","Проверить");
+const mk=t=>{const b=h("button","chip",t);b.onclick=()=>{if(box.ok)return;(b.parentNode==bk?ans:bk).append(b)};return b};
+shuf(A.split(" ").concat(q.x||[])).forEach(t=>bk.append(mk(t)));
+c.onclick=()=>{const s=[...ans.children].map(b=>b.textContent).join(" ");if(norm(s)==norm(A)){box.ok=1;ans.classList.add("ok");if(!tr)pr.textContent=q.r+" "+EMJ(q.e);if(++n==d.length)done()}else{ans.classList.add("bad");setTimeout(()=>ans.classList.remove("bad"),500)}};
+box.append(pr,ans,bk,c);el.append(box)})}
+function tf(el,t,qs,done){const tx=h("div","txt");t.forEach(e=>tx.append(h("p","en",e[0]),h("p","ru",e[1])));el.append(tx);let n=0;
+qs.forEach(q=>{const b=h("div","q","<p class=en>"+EM(q.s)+"</p><p class=ru>"+q.r+"</p>"),o=h("div","opts");
+["True","False"].forEach(t=>{const x=h("button","chip",t);x.onclick=()=>{if(b.s)return;if((t=="True")==q.a){x.classList.add("ok");b.s=1;if(++n==qs.length)done()}else x.classList.add("bad")};o.append(x)});b.append(o);el.append(b)})}
+function boss(el,d,done){const run=()=>{el.innerHTML="";let hp=d.length,lv=3;const top=h("div","boss","<b>Экзаменатор</b> <span class=lv></span><div class=hp><i></i></div>"),L=top.querySelector(".lv"),B=top.querySelector("i"),body=h("div");
+const up=()=>{L.textContent="♥".repeat(lv);B.style.width=hp/d.length*100+"%"};up();el.append(top,body);
+mc(body,d,done,ok=>{if(ok){hp--;up()}else{lv--;up();if(!lv){body.querySelectorAll(".q").forEach(q=>q.l=1);const r=h("button","go","Босс победил. Попробовать снова");r.onclick=run;body.append(r)}}})};run()}
+
+function fix(el,d,done){let n=0;d.forEach(q=>{const b=h("div","q"),o=h("div","opts");
+q.s.split(" ").forEach((t,i)=>{const x=h("button","chip",t);x.onclick=()=>{if(b.s)return;if(i==q.i){b.s=1;x.className="chip ok";x.textContent=q.c;if(++n==d.length)done()}else{x.classList.add("bad");setTimeout(()=>x.classList.remove("bad"),500)}};o.append(x)});
+b.append(h("p","ru",q.r),o);el.append(b)})}
+function trn(el,d,done){let t=0;const rows=d.map(q=>{const r=h("div","q","<p class=en>"+q.r+"</p><p class=ru><i>"+q.w+"</i></p><input class=wide autocomplete=off autocapitalize=off spellcheck=false><p class=ru></p>");el.append(r);return r});
+const btn=h("button","go","Проверить");btn.onclick=()=>{t++;let ok=0;rows.forEach((r,i)=>{const n=r.querySelector("input"),g=new RegExp("^("+d[i].a+")$").test(norm(n.value));n.className="wide "+(g?"ok":"bad");r.querySelector("p:last-child").textContent=!g&&t>1?"Подсказка: "+d[i].h:"";ok+=g});btn.textContent="Проверить ещё раз ("+ok+"/"+d.length+")";if(ok==d.length)done()};el.append(btn)}
+
+const E=[
+{t:"Карточки с примерами",i:"Нажми на карточку, чтобы увидеть перевод. Second Conditional: If + Past Simple, would/could + глагол.",f:(e,d)=>flip(e,[
+["If I had more time, I would study anatomy every evening.","Если бы у меня было больше времени, я бы занималась анатомией каждый вечер."],
+["If I were a neurosurgeon, I would operate on the brain.","Если бы я была нейрохирургом, я бы оперировала на головном мозге."],
+["If I became a scientist, I would study the nervous system.","Если бы я стала учёным, я бы изучала нервную систему."],
+["If the physiology exam were easier, I wouldn’t worry so much.","Если бы экзамен по физиологии был проще, я бы так не переживала."],
+["If I knew all the bones, I would pass the anatomy exam easily.","Если бы я знала все кости, я бы легко сдала экзамен по анатомии."],
+["If Richard didn’t sit on my atlas, I would study more calmly.","Если бы Ричард не сидел на моём атласе, я бы занималась спокойнее."]],d)},
+{t:"Найди пару",i:"Соедини начало предложения с концом. Нажми на левую часть, потом на правую.",f:(e,d)=>match(e,[
+["If Amina were a neurosurgeon,","she would work in the operating room.","Если бы Амина была нейрохирургом, она бы работала в операционной."],
+["If she had more free time,","she would read scientific articles.","Если бы у неё было больше свободного времени, она бы читала научные статьи."],
+["If the lecture were shorter,","she would have more time to revise.","Если бы лекция была короче, у неё было бы больше времени на повторение."],
+["If she knew all the muscles,","she would feel confident at the exam.","Если бы она знала все мышцы, она бы чувствовала себя уверенно на экзамене."],
+["If she became a scientist,","she would research the human brain.","Если бы она стала учёным, она бы исследовала человеческий мозг."]],d)},
+{t:"Выбери форму",i:"Выбери правильный вариант.",f:(e,d)=>mc(e,[
+{s:"If Amina ___ a neurosurgeon, she would work with the brain.",o:["is","were","would be"],a:"were",r:"Если бы Амина была нейрохирургом, она бы работала с мозгом."},
+{s:"If she ___ more time, she would revise every topic twice.",o:["has","had","would have"],a:"had",r:"Если бы у неё было больше времени, она бы повторила каждую тему дважды."},
+{s:"If we had more practice, we ___ remember the bones better.",o:["will","could","can"],a:"could",r:"Если бы у нас было больше практики, мы могли бы лучше запомнить кости."},
+{s:"She wouldn’t be tired if she ___ to bed earlier.",o:["goes","went","would go"],a:"went",r:"Она бы не уставала, если бы ложилась спать раньше."},
+{s:"If I ___ you, I would draw the nervous system.",o:["am","were","would be"],a:"were",r:"На твоём месте я бы нарисовала нервную систему."}],d)},
+{t:"Впиши глагол: учёба и дом",i:"Поставь глагол в скобках в нужную форму.",f:(e,d)=>typ(e,[
+{s:"If Amina ___ a free evening, she would watch a series.",w:"(have)",a:["had"],r:"Если бы у Амины был свободный вечер, она бы посмотрела сериал."},
+{s:"The students ___ happy if the exam were easy.",w:"(be)",a:["would be"],r:"Студенты были бы рады, если бы экзамен был лёгким."},
+{s:"If Richard ___ a doctor, he would examine every toy mouse.",w:"(be)",a:["were","was"],r:"Если бы Ричард был врачом, он бы осматривал каждую игрушечную мышку."},
+{s:"If I ___ the answer, I would raise my hand.",w:"(know)",a:["knew"],r:"Если бы я знала ответ, я бы подняла руку."},
+{s:"What ___ Amina do if she failed the exam?",w:"(do)",a:["would"],r:"Что бы сделала Амина, если бы не сдала экзамен?"}],d)},
+{t:"Впиши глагол: анатомия и физиология",i:"Поставь слово в нужную форму: Past Simple или would/could.",f:(e,d)=>typ(e,[
+{s:"If Amina ___ her notes again, she would understand the heart cycle.",w:"(read)",a:["read"],r:"Если бы Амина перечитала конспекты, она бы поняла сердечный цикл."},
+{s:"If we ___ a skeleton model, we would learn the bones faster.",w:"(have)",a:["had"],r:"Если бы у нас была модель скелета, мы бы выучили кости быстрее."},
+{s:"She ___ answer faster if she remembered the Latin names.",w:"(can)",a:["could"],r:"Она могла бы отвечать быстрее, если бы помнила латинские названия."},
+{s:"If the nervous system ___ simpler, I would love it even more.",w:"(be)",a:["were","was"],r:"Если бы нервная система была проще, я бы любила её ещё больше."},
+{s:"What ___ you do if you forgot the name of a muscle?",w:"(do)",a:["would"],r:"Что бы ты сделала, если бы забыла название мышцы?"}],d)},
+{t:"Найди ошибку",i:"Нажми на слово с ошибкой. Если угадала, оно заменится на правильное.",f:(e,d)=>fix(e,[
+{s:"If I have a skeleton model, I would learn the bones faster.",i:2,c:"had",r:"Если бы у меня была модель скелета, я бы быстрее выучила кости."},
+{s:"If she were a scientist, she will study the brain.",i:6,c:"would",r:"Если бы она была учёным, она бы изучала мозг."},
+{s:"We would finish earlier if the lecture is shorter.",i:7,c:"were",r:"Мы бы закончили раньше, если бы лекция была короче."},
+{s:"She would not be nervous if she doesn’t have exams.",i:7,c:"didn’t",r:"Она бы не нервничала, если бы у неё не было экзаменов."},
+{s:"If Richard were bigger, he can protect my notes.",i:5,c:"could",r:"Если бы Ричард был больше, он мог бы охранять мои конспекты."}],d)},
+{t:"Собери предложение",i:"Нажимай на слова в правильном порядке. Нажми на слово в ответе, чтобы убрать его.",f:(e,d)=>build(e,[
+{e:"If I had a good atlas, I would learn anatomy faster",r:"Если бы у меня был хороший атлас, я бы быстрее выучила анатомию."},
+{e:"The exam would be easier if I studied every day",r:"Экзамен был бы легче, если бы я занималась каждый день."},
+{e:"If Amina were a neurosurgeon, she would save many patients",r:"Если бы Амина была нейрохирургом, она бы спасала многих пациентов."},
+{e:"What would you do if the exam were tomorrow",r:"Что бы ты делала, если бы экзамен был завтра?"}],d,0)},
+{t:"Переведи на английский: из слов",i:"Собери английский перевод из слов. Осторожно: есть лишние слова.",f:(e,d)=>build(e,[
+{e:"If I had more time, I would learn to draw the brain better",x:["will","have"],r:"Если бы у меня было больше времени, я бы лучше научилась рисовать мозг."},
+{e:"If Richard were bigger, he would sleep on my laptop",x:["will","is"],r:"Если бы Ричард был больше, он спал бы на моём ноутбуке."},
+{e:"If my groupmates came on time, the seminar would start at nine",x:["will","comes"],r:"Если бы одногруппники приходили вовремя, семинар начинался бы в девять."},
+{e:"If I were you, I would check the lecture notes again",x:["am","will"],r:"На твоём месте я бы ещё раз проверила конспект лекции."}],d,1)},
+{t:"Переведи сама: впиши целое предложение",i:"Переведи предложение на английский и впиши. Если ошибёшься дважды, появится подсказка.",f:(e,d)=>trn(e,[
+{r:"Если бы у меня было больше времени, я бы повторила анатомию.",w:"(повторить — revise; анатомия — anatomy)",a:"if i had more time i would (revise|review|repeat) anatomy",h:"If + had, потом I would revise ..."},
+{r:"Если бы Ричард был больше, он бы охранял мои конспекты.",w:"(охранять — guard; конспекты — notes)",a:"if richard (were|was) (bigger|larger) he would guard my notes",h:"If Richard were ..., he would ..."},
+{r:"Если бы лекция была короче, студенты были бы довольны.",w:"(лекция — lecture; студенты — students)",a:"if the lecture (were|was) shorter (the )?students would be happy",h:"If the lecture were ..., students would be ..."},
+{r:"Что бы ты сделала, если бы забыла название кости?",w:"(забыть — forget, Past Simple: forgot; кость — bone)",a:"what would you do if you forgot the name of (the|a) bone",h:"What would you do if you forgot ...?"}],d)},
+{t:"Скажи по-английски",i:"Прочитай по-русски, скажи вслух по-английски, потом нажми на карточку и проверь себя.",f:(e,d)=>flip(e,[
+["Если бы я знала все кости, я бы не нервничала на экзамене.","If I knew all the bones, I wouldn’t be nervous at the exam.<br><i>Если бы я знала все кости, я бы не нервничала на экзамене.</i>"],
+["Если бы я была нейрохирургом, я бы оперировала в лучшей клинике.","If I were a neurosurgeon, I would operate in the best clinic.<br><i>Если бы я была нейрохирургом, я бы оперировала в лучшей клинике.</i>"],
+["Если бы я стала учёным, я бы изучала, как работает мозг.","If I became a scientist, I would study how the brain works.<br><i>Если бы я стала учёным, я бы изучала, как работает мозг.</i>"],
+["Если бы у меня был выходной, я бы проспала до обеда.","If I had a day off, I would sleep until noon.<br><i>Если бы у меня был выходной, я бы проспала до обеда.</i>"]],d)},
+{t:"Диалог в университете",i:"Выбери слово для ответа в диалоге.",f:(e,d)=>mc(e,[
+{s:"— What would you do if the professor asked about the heart? — I ___ the question.",o:["would answer","will answer","answered"],a:"would answer",r:"— Что бы ты сделала, если бы профессор спросил про сердце? — Я бы ответила на вопрос."},
+{s:"— If the lecture started at 8 a.m., would you come? — Yes, I ___.",o:["would","will","did"],a:"would",r:"— Если бы лекция начиналась в 8 утра, ты бы пришла? — Да, пришла бы."},
+{s:"— If you were a doctor, which specialty ___ you choose? — Neurosurgery.",o:["will","would","did"],a:"would",r:"— Если бы ты была врачом, какую специальность ты бы выбрала? — Нейрохирургию."},
+{s:"— Would you do research if you got a grant? — If I ___ one, maybe.",o:["get","got","would get"],a:"got",r:"— Ты бы занималась наукой, если бы получила грант? — Если бы получила, возможно."}],d)},
+{t:"Читаем и проверяем",i:"Прочитай текст уровня B1 и отметь: True или False.",f:(e,d)=>tf(e,[
+["Amina is a medical student who spends most of her week in lectures, dissection classes and the library. At the moment she is revising for her anatomy and physiology exams, so her desk is covered with an atlas, flashcards and a plastic model of the skeleton.",""],
+["Anatomy is the subject she finds most demanding, because she has to memorise hundreds of Latin names: the femur, the humerus, the thoracic vertebrae and twelve pairs of cranial nerves. Physiology, on the other hand, fascinates her, especially the way neurons send electrical signals across a synapse.",""],
+["Amina has not decided on her future yet. If she chose research, she would probably study how the cerebral cortex controls movement. If she became a neurosurgeon, she would spend long hours in the operating theatre and would have to stay calm under pressure.",""],
+["Her cat Richard does not help her concentration. Yesterday he knocked the skeleton off the shelf, and the skull rolled under the sofa. Amina says that if Richard were a medical student, he would fail anatomy, because he cannot tell a rib from a toy.",""],
+["Before the exam, she makes a plan: two hours for the circulatory system, an hour for the respiratory system and thirty minutes for the nervous system. She believes that if she revised a little every day, she wouldn’t panic the night before the test.",""]],[
+{s:"Amina finds physiology harder than anatomy.",a:false,r:""},
+{s:"She has to memorise the Latin names of bones and cranial nerves.",a:true,r:""},
+{s:"If she became a neurosurgeon, she would work in an operating theatre.",a:true,r:""},
+{s:"Amina has already chosen a career in research.",a:false,r:""},
+{s:"The skeleton fell off the shelf because of Richard.",a:true,r:""},
+{s:"She plans to spend most of her revision time on the respiratory system.",a:false,r:""}],d)},
+{t:"Финальный босс",i:"Победи Экзаменатора. У тебя 3 жизни. Каждый правильный ответ снимает часть шкалы босса.",f:(e,d)=>boss(e,[
+{s:"If I ___ the exam, I would celebrate with Richard.",o:["pass","passed","would pass"],a:"passed",r:"Если бы я сдала экзамен, я бы отпраздновала с Ричардом."},
+{s:"If I knew all the bones, I ___ pass the anatomy exam easily.",o:["can","could","will"],a:"could",r:"Если бы я знала все кости, я бы легко сдала экзамен по анатомии."},
+{s:"What would you do if you ___ the physiology exam?",o:["fail","failed","would fail"],a:"failed",r:"Что бы ты сделала, если бы не сдала экзамен по физиологии?"},
+{s:"If Richard ___ on the skeleton model, it would fall.",o:["sits","sat","would sit"],a:"sat",r:"Если бы Ричард сел на модель скелета, она бы упала."},
+{s:"If my research ___ successful, I would publish an article.",o:["is","were","would be"],a:"were",r:"Если бы моё исследование было успешным, я бы опубликовала статью."},
+{s:"I wouldn’t be nervous if I ___ all the answers.",o:["know","knew","would know"],a:"knew",r:"Я бы не нервничала, если бы знала все ответы."}],d)}
+];
+function renderSet(data,appId,pbId,cntId,finId){
+ const app=document.getElementById(appId),pb=document.getElementById(pbId),cnt=document.getElementById(cntId),fin=document.getElementById(finId);
+ let completed=0;cnt.textContent="0 / "+data.length;
+ data.forEach((x,i)=>{const c=h("section","card","<h2>"+(i+1)+". "+x.t+"</h2><p class=instr>"+x.i+"</p>"),b=h("div");c.append(b);app.append(c);
+ let ok=0;x.f(b,()=>{if(ok)return;ok=1;c.classList.add("done");completed++;pb.style.width=completed*100/data.length+"%";cnt.textContent=completed+" / "+data.length;if(completed===data.length)fin.style.display="block"})});
+}
+renderSet(E,"app","pb","cnt","fin");
+
+const E2 = [
+ {t:"🐾 Квадратные карточки: Richard’s world",i:"Тапай по квадратным карточкам: сначала попробуй перевести фразу сама, затем открой ответ.",f:(e,d)=>squareFlip(e,[
+  ["Richard loves sleeping on books.","Ричард обожает спать на книгах."],
+  ["He would chase every moth.","Он погнался бы за каждой молью."],
+  ["If he found a secret box, he would climb into it.","Если бы он нашёл тайную коробку, он бы залез в неё."],
+  ["If Richard could talk, he would ask for more fish.","Если бы Ричард умел разговаривать, он бы попросил ещё рыбы."],
+  ["He would be the happiest cat in the building.","Он был бы самым счастливым котом в доме."],
+  ["If it weren’t raining, he would sit on the balcony.","Если бы не шёл дождь, он бы сидел на балконе."]
+ ],d)},
+ {t:"🔗 Найди пару: маленькие приключения",i:"Соедини начало и конец предложения.",f:(e,d)=>match(e,[
+  ["If Richard saw a bird,","he would watch it from the window.","Если бы Ричард увидел птицу, он бы наблюдал за ней из окна."],
+  ["If Amina had a free afternoon,","she would play with Richard.","Если бы у Амины был свободный день, она бы поиграла с Ричардом."],
+  ["If the weather were warmer,","they would open the balcony door.","Если бы погода была теплее, они бы открыли балконную дверь."],
+  ["If Richard found a pen,","he would push it off the desk.","Если бы Ричард нашёл ручку, он бы столкнул её со стола."],
+  ["If he weren’t so sleepy,","he would play with his toys.","Если бы он не был таким сонным, он бы играл со своими игрушками."]
+ ],d)},
+ {t:"💡 Выбери правильную форму",i:"Выбери один правильный вариант.",f:(e,d)=>mc(e,[
+  {s:"If Richard ___ wings, he would fly over the building.",o:["has","had","would have"],a:"had",r:"Если бы у Ричарда были крылья, он бы летал над домом."},
+  {s:"If Amina ___ a bigger desk, Richard could sleep next to her laptop.",o:["buys","bought","would buy"],a:"bought",r:"Если бы Амина купила стол побольше, Ричард мог бы спать рядом с её ноутбуком."},
+  {s:"Richard ___ happier if he had more treats.",o:["would be","will be","is"],a:"would be",r:"Ричард был бы счастливее, если бы у него было больше лакомств."},
+  {s:"If it ___ sunny, he would lie on the windowsill.",o:["is","were","would be"],a:"were",r:"Если бы было солнечно, он бы лежал на подоконнике."},
+  {s:"What ___ Richard do if he met a mouse?",o:["will","does","would"],a:"would",r:"Что бы сделал Ричард, если бы встретил мышь?"}
+ ],d)},
+ {t:"✍️ Впиши глагол",i:"Поставь глагол в скобках в нужную форму.",f:(e,d)=>typ(e,[
+  {s:"If Richard ___ a treasure, he would meow loudly.",w:"(find)",a:["found"],r:"Если бы Ричард нашёл сокровище, он бы громко замяукал."},
+  {s:"Amina ___ him a toy if she had a day off.",w:"(buy)",a:["would buy"],r:"Амина купила бы ему игрушку, если бы у неё был выходной."},
+  {s:"If he ___ a big cat, he could catch a pigeon.",w:"(be)",a:["were","was"],r:"Если бы он был большим котом, он мог бы поймать голубя."}
+ ],d)},
+ {t:"🕵️ Найди ошибку",i:"Нажми на слово с ошибкой — оно заменится правильным.",f:(e,d)=>fix(e,[
+  {s:"If Richard has a box, he would hide in it.",i:2,c:"had",r:"Если бы у Ричарда была коробка, он бы спрятался в ней."},
+  {s:"If it would rain, we would stay at home.",i:2,c:"rained",r:"Если бы пошёл дождь, мы бы остались дома."},
+  {s:"Amina would laugh if Richard jump on the shelf.",i:5,c:"jumped",r:"Амина бы рассмеялась, если бы Ричард запрыгнул на полку."},
+  {s:"If Richard were hungry, he will ask for food.",i:5,c:"would",r:"Если бы Ричард проголодался, он бы попросил еду."},
+  {s:"If I am Richard, I would sleep all day.",i:2,c:"were",r:"Если бы я была Ричардом, я бы спала весь день."}
+ ],d)},
+ {t:"🧩 Собери предложение",i:"Нажимай на слова в правильном порядке. Чтобы убрать слово, нажми на него в верхнем поле.",f:(e,d)=>build(e,[
+  {e:"If Richard had a bigger bed, he would sleep all day",r:"Если бы у Ричарда была кровать побольше, он бы спал весь день.",x:["will","has"]},
+  {e:"Amina would come home earlier if the lecture ended",r:"Амина пришла бы домой раньше, если бы лекция закончилась.",x:["comes","will"]},
+  {e:"If he found a toy mouse, he would play with it",r:"Если бы он нашёл игрушечную мышку, он бы поиграл с ней.",x:["finds","will"]},
+  {e:"What would Richard do if he could open the door",r:"Что бы сделал Ричард, если бы мог открыть дверь?",x:["will","does"]}
+ ],d,0)},
+ {t:"🇷🇺 Переведи с русского на английский",i:"Впиши всё предложение на английском. После второй попытки появится подсказка. Допустимы указанные варианты.",f:(e,d)=>trn(e,[
+  {r:"Если бы Ричард умел летать, он бы увидел весь дом.",w:"(уметь — can; увидеть — see)",a:"if richard (could|was able to) fly he would see (all|the whole) (building|house)",h:"If Richard could fly, he would see the whole building."},
+  {r:"Если бы Амина купила ему мячик, он был бы очень счастлив.",w:"(купить — buy; счастливый — happy)",a:"if amina bought him a ball he would be very happy",h:"If Amina bought him a ball, he would be very happy."},
+  {r:"Что бы ты сделала, если бы Ричард убежал?",w:"(убежать — run away; Past Simple: ran away)",a:"what would you do if richard ran away",h:"What would you do if Richard ran away?"},
+  {r:"Если бы сегодня не было дождя, он бы дольше сидел на балконе.",w:"(дождь — rain; сидеть — sit)",a:"if it (were not|was not|weren't|wasn't) raining today he would sit on the balcony longer",h:"If it weren’t raining today, he would sit on the balcony longer."},
+  {r:"На месте Амины я бы разрешила ему спать на атласе.",w:"(на месте — if I were; разрешить — let)",a:"if i were amina i would let him sleep on the atlas",h:"If I were Amina, I would let him sleep on the atlas."}
+ ],d)},
+ {t:"🎤 Скажи по-английски",i:"Прочитай русскую фразу, произнеси английский вариант, затем нажми на квадратную карточку, чтобы проверить себя.",f:(e,d)=>squareFlip(e,[
+  ["Если бы Ричард нашёл ручку, он бы столкнул её со стола.","If Richard found a pen, he would push it off the table."],
+  ["Если бы у Амины было больше времени, она бы играла с Ричардом каждый вечер.","If Amina had more time, she would play with Richard every evening."],
+  ["Если бы Ричард не боялся пылесоса, он бы не прятался под диваном.","If Richard weren’t afraid of the vacuum cleaner, he wouldn’t hide under the sofa."],
+  ["Если бы у него было больше игрушек, он бы не грыз провода.","If he had more toys, he wouldn’t chew the cables."],
+  ["Если бы я была кошкой, я бы тоже любила спать весь день.","If I were a cat, I would love sleeping all day too."]
+ ],d)},
+ {t:"📖 Ричард и пропавший скелет: Past Simple и Second Conditional",i:"Прочитай историю уровня B1. Обрати внимание на Past Simple и на предложения со Second Conditional. Затем выбери True или False.",f:(e,d)=>tf(e,[
+  ["Last Saturday, Amina studied the nervous system for four hours. She drew the brain, the spinal cord and the cranial nerves, and Richard sat beside her and watched the pages.",""],
+  ["Suddenly he jumped onto the table and knocked a pen off the desk. Amina laughed, picked it up and went back to her notes on neurons and synapses. “If you were a neurosurgeon, you would have steadier paws,” she told him.",""],
+  ["A few minutes later, she heard a strange noise from the bookshelf. Richard found a small plastic skeleton and dragged it to the floor. The skull rolled under the sofa, and the left femur broke off.",""],
+  ["Amina took the skeleton and named all the bones. To her surprise, she remembered every one of them: the skull, the ribs, the sternum, the humerus and the vertebrae. She even wrapped the broken femur in a bandage and joked that if it were a real patient, it would need a splint.",""],
+  ["She thanked Richard and gave him a fish treat as a reward. He ate it, curled up on the atlas and fell asleep as if nothing unusual happened.",""]
+ ],[
+  {s:"Amina studied the nervous system on Sunday.",a:false,r:""},
+  {s:"Richard knocked a pen off the desk.",a:true,r:""},
+  {s:"Amina said that Richard would have steadier paws if he were a neurosurgeon.",a:true,r:""},
+  {s:"Richard found a real skeleton in the library.",a:false,r:""},
+  {s:"Amina wrapped the broken femur in a bandage.",a:true,r:""},
+  {s:"Amina was angry when Richard dragged the skeleton to the floor.",a:false,r:""}
+ ],d)},
+ {t:"👑 Финальный босс: спасаем конспекты!",i:"6 вопросов, 3 жизни. Выбери правильную форму и помоги Амине спасти конспекты от Ричарда!",f:(e,d)=>boss(e,[
+  {s:"If Richard ___ the door open, he would run onto the balcony.",o:["finds","found","would find"],a:"found",r:"Если бы Ричард обнаружил дверь открытой, он бы выбежал на балкон."},
+  {s:"If Amina had a free day, she ___ with him all morning.",o:["would play","will play","plays"],a:"would play",r:"Если бы у Амины был свободный день, она бы играла с ним всё утро."},
+  {s:"What would you do if your cat ___ your notes?",o:["tears","tore","would tear"],a:"tore",r:"Что бы ты сделала, если бы твой кот порвал твои конспекты?"},
+  {s:"If Richard ___ a superhero, he would save all the fish.",o:["were","is","would be"],a:"were",r:"Если бы Ричард был супергероем, он бы спас всю рыбу."},
+  {s:"He could jump higher if he ___ so sleepy.",o:["isn't","weren't","wouldn't be"],a:"weren't",r:"Он мог бы прыгать выше, если бы не был таким сонным."},
+  {s:"If I were Amina, I ___ him an extra treat.",o:["give","will give","would give"],a:"would give",r:"На месте Амины я бы дала ему дополнительное лакомство."}
+ ],d)}
+];
+
+function squareFlip(el,d,done){
+ let count=0;const grid=h("div","square-grid");
+ d.forEach(([front,back])=>{
+  const b=h("button","square-card","<span class='sq-front'>"+EM(front)+"</span><span class='sq-back'>"+back+"</span><span class='sq-hint'>TAP ✨</span>");
+  b.onclick=()=>{const opened=b.classList.toggle("opened");if(opened&&!b.seen){b.seen=1;if(++count===d.length)done()}};
+  grid.append(b);
+ });el.append(grid);
+}
+renderSet(E2,"app2","pb2","cnt2","fin2");
+
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===btn));
+ document.querySelectorAll(".lesson-page").forEach(x=>x.classList.toggle("active",x.id===btn.dataset.tab));
+ window.scrollTo({top:0,behavior:"smooth"});
+}));
+
+</script>
+</body>
+</html>
